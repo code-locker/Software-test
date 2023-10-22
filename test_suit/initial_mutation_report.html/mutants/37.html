@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MutPy mutation report - mutation #37</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    
+<link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPython.js" type="text/javascript"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+    window.setTimeout(function () {
+        
+        $('.line.number34').attr('title', 'ROR');
+        
+    }, 0);
+</script>
+
+</head>
+<body>
+    <div class="container">
+        
+<div class="page-header">
+    <h1>Mutation #37</h1>
+</div>
+<h3>Details</h3>
+<ul>
+    <li>module - <code><module 'isTriangle' from '/home/abhishek/Software_testing/test_suit/./isTriangle.py'></code></li>
+    <li><span class="label label-danger">survived</span></li>
+    
+    <li>duration - 0.005 s</li>
+    
+    
+    <li>tests run - 5</li>
+    
+</ul>
+
+<h3>Mutations</h3>
+<ul>
+    
+    <li>ROR - line 34</li>
+    
+</ul>
+<h3>Mutant</h3>
+<pre class="brush: python; first-line: 1; highlight: [34]; toolbar: false;">from enum import Enum
+
+
+class Triangle:
+    '''
+    An implementation that classifies triangles.
+    '''
+    
+    class Type(Enum):
+        INVALID = 0
+        SCALENE = 1
+        EQUILATERAL = 2
+        ISOSCELES = 3
+    
+    
+    @staticmethod
+    def classify(a, b, c):'''
+        This static method does the actual classification of a triangle, given the lengths
+        of its three sides.
+        '''
+        if (a <= 0 or b <= 0 or c <= 0):
+            return Triangle.Type.INVALID
+        
+        trian = 0
+        
+        if a == b:
+            trian += 1
+        if a == c:
+            trian += 2
+        if b == c:
+            trian += 3
+        
+        if trian == 0:
+            if (a + b < c or a + c <= b or b + c <= a):
+                return Triangle.Type.INVALID
+            else:
+                return Triangle.Type.SCALENE
+        
+        if trian > 3:
+            return Triangle.Type.EQUILATERAL
+        
+        if (trian == 1 and a + b > c):
+            return Triangle.Type.ISOSCELES
+        elif (trian == 2 and a + c > b):
+            return Triangle.Type.ISOSCELES
+        elif (trian == 3 and b + c > a):
+            return Triangle.Type.ISOSCELES
+        
+        return Triangle.Type.INVALID</pre>
+
+    </div>
+</body>
+</html>
